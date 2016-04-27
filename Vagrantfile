@@ -77,12 +77,14 @@ Vagrant.configure(2) do |config|
     curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
     sudo apt-get install -y nodejs
 
+    #Install Web server
+    sudo apt-get install -y nginx
+
     #Windows host: symlink node_modules to dir outside of synced folder. This prevents file system failures for long paths.
-    su vagrant
-    mkdir /home/vagrant/node_modules
-    cd /var/www/project
-    ln -s /home/vagrant/node_modules/ node_modules
-    npm install
+    #su vagrant
+    #mkdir /home/vagrant/node_modules
+    #cd /var/www/project
+    #ln -s /home/vagrant/node_modules/ node_modules
 
     #Windows host: Enable symlinks in synced folder (important for npm installations)
     #On Windows CMD with administrator permissions, enter: (and restart Windows machine)
@@ -92,5 +94,7 @@ Vagrant.configure(2) do |config|
     #Virtualbox.exe
     #VBoxManage.exe
     #VBoxHeadless.exe
+
+    npm install
   SHELL
 end
