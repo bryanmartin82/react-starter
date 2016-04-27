@@ -20,7 +20,7 @@ const config = {
 //TODO:
 config.entry = {
   app: DEV
-    ? [APP_ENTRY, 'webpack-hot-middleware/client']
+    ? [APP_ENTRY, 'webpack-hot-middleware/client', 'webpack/hot/only-dev-server', 'react-hot-loader/patch']
     : [APP_ENTRY]
 };
 
@@ -61,7 +61,7 @@ config.module.loaders = [{
   exclude: /node_modules/,
   query: {
     cacheDirectory: true,
-    plugins: ['transform-runtime'],
+    plugins: ['transform-runtime', 'react-hot-loader/babel'],
     presets: ['es2015', 'react', 'stage-0'],
     env: {
       production: {

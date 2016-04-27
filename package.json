@@ -28,6 +28,8 @@
     "express": "^4.13.4",
     "html-webpack-plugin": "^2.16.0",
     "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-hot-loader": "^3.0.0-alpha.8",
     "rimraf": "^2.5.2",
     "webpack": "^1.13.0"
   },
