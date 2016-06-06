@@ -8,9 +8,9 @@ const DEV = ENV == 'development';
 const APP_ENTRY = './app';
 const DIST = 'dist';
 const SRC = 'app';
-const BASE = path.resolve(__dirname, '..');
 
 const config = {
+  devtool:"eval",
   module: {},
   resolve: {
     root: [path.resolve('./app')]
@@ -20,24 +20,27 @@ const config = {
 //TODO:
 config.entry = {
   app: DEV
-    ? [APP_ENTRY, 'webpack-hot-middleware/client', 'webpack/hot/only-dev-server', 'react-hot-loader/patch']
+    ? ['react-hot-loader/patch', 'webpack-hot-middleware/client', 'webpack/hot/only-dev-server', APP_ENTRY]
     : [APP_ENTRY]
 };
 
 config.output = {
   path: path.join(__dirname, DIST),
   //OccurenceOrderPlugin needed for using chunkhash
-  filename: '[name].[chunkhash].js',
+  filename: '[name].[hash].js',
   publicPath: ''
 };
 
 config.plugins = [
   new HtmlWebpackPlugin({
     title: 'React Starter',
-    template: path.join(BASE, SRC, 'index.html'),
+    template: path.join(__dirname, SRC, 'index.html'),
     hash: false,
-    filename: 'index.html',
-    inject: 'body'
+    inject: false,
+    appMountId: 'root',
+    minify: {
+      collapseWhitespace: true
+    }
   })
 ];
 

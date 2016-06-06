@@ -6,9 +6,6 @@
   "author": "Bryan Martin",
   "license": "MIT",
   "scripts": {
-    "build-server": "babel -d ./dist-server ./server -s",
-    "clean-server": "rimraf dist-server",
-    "deploy-server": "npm run clean-server && npm run build-server",
     "start": "DEBUG=app:* babel-node ./server",
     "build": "DEBUG=app:* babel-node webpackBuild",
     "clean": "rimraf dist",
@@ -26,10 +23,12 @@
     "babel-runtime": "^6.6.1",
     "debug": "^2.2.0",
     "express": "^4.13.4",
-    "html-webpack-plugin": "^2.16.0",
+    "html-webpack-plugin": "^2.19.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-hot-loader": "^3.0.0-alpha.8",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
     "rimraf": "^2.5.2",
     "webpack": "^1.13.0"
   },
