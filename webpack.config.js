@@ -34,7 +34,7 @@ config.output = {
 config.plugins = [
   new HtmlWebpackPlugin({
     title: 'React Starter',
-    template: path.join(__dirname, SRC, 'index.html'),
+    template: path.join(__dirname, SRC, 'index.ejs'),
     hash: false,
     inject: false,
     appMountId: 'root',

@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux';
-
-const hello = function(state = {msg: 'Hello World!'}) {
-  return state;
-};
+import helloWorld from 'HelloWorld/reducer';
 
 const rootReducer = combineReducers({
-  hello
+  helloWorld
 });
 
 export default rootReducer;

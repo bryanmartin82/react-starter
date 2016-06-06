@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import HelloWorld from './HelloWorld/container';
 
-class AppContainer extends Component {
+export default class App extends Component {
   render() {
-    const {msg} = this.props.hello;
     return (
-      <h1>{msg}</h1>
-    );
+      <div>
+        <HelloWorld />
+      </div>
+    )
   }
 }
-
-function mapState(state) {
-  return {
-    hello: state.hello
-  };
-}
-
-export default connect(mapState)(AppContainer);
