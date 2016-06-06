@@ -5,15 +5,14 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 const ENV = process.env.NODE_ENV || 'development';
 const DEV = ENV == 'development';
 
-const APP_ENTRY = './app';
+const APP_ENTRY = './src';
 const DIST = 'dist';
-const SRC = 'app';
 
 const config = {
   devtool:"eval",
   module: {},
   resolve: {
-    root: [path.resolve('./app')]
+    root: [path.resolve('./src')]
   }
 };
 
@@ -34,7 +33,7 @@ config.output = {
 config.plugins = [
   new HtmlWebpackPlugin({
     title: 'React Starter',
-    template: path.join(__dirname, SRC, 'index.ejs'),
+    template: path.join(APP_ENTRY, 'index.ejs'),
     hash: false,
     inject: false,
     appMountId: 'root',
