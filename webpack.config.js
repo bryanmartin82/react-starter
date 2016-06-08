@@ -16,7 +16,6 @@ const config = {
   }
 };
 
-//TODO:
 config.entry = {
   app: DEV
     ? ['react-hot-loader/patch', 'webpack-hot-middleware/client', 'webpack/hot/only-dev-server', APP_ENTRY]
@@ -57,20 +56,26 @@ if (DEV) {
 }
 
 
-config.module.loaders = [{
-  test: /\.(js|jsx)$/,
-  loader: 'babel',
-  exclude: /node_modules/,
-  query: {
-    cacheDirectory: true,
-    plugins: ['transform-runtime', 'react-hot-loader/babel'],
-    presets: ['es2015', 'react', 'stage-0'],
-    env: {
-      production: {
-        presets: ['react-optimize']
+config.module.loaders = [
+  {
+    test: /\.(js|jsx)$/,
+    loader: 'babel',
+    exclude: /node_modules/,
+    query: {
+      cacheDirectory: true,
+      plugins: ['transform-runtime', 'react-hot-loader/babel'],
+      presets: ['es2015', 'react', 'stage-0'],
+      env: {
+        production: {
+          presets: ['react-optimize']
+        }
       }
     }
+  },
+  {
+    test: /\.css$/,
+    loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
   }
-}];
+];
 
 export default config;

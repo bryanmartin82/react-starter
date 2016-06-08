@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as ActionCreators from './actions';
+import styles from './styles.css';
 
 class HelloWorldContainer extends Component {
   render() {
-    const {msg} = this.props.helloWorld;
+    const { msg, color, lastColor } = this.props.helloWorld;
+    console.log(styles);
     return (
-      <h1>{msg}</h1>
+      <div className={styles.root}>
+        <h1 className={styles.element} onClick={this.getRandomColor} style={{color}}>{msg}</h1>
+        {color == lastColor && <div>D'oh! Same color.</div>}
+      </div>
     );
+  }
+
+  getRandomColor = () => {
+    this.props.dispatch(ActionCreators.changeColor());
   }
 }
 
