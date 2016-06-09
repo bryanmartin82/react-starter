@@ -6,7 +6,6 @@ import styles from './styles.css';
 class HelloWorldContainer extends Component {
   render() {
     const { msg, color, lastColor } = this.props.helloWorld;
-    console.log(styles);
     return (
       <div className={styles.root}>
         <h1 className={styles.element} onClick={this.getRandomColor} style={{color}}>{msg}</h1>

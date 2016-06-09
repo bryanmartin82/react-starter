@@ -1,15 +1,17 @@
 import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const ENV = process.env.NODE_ENV || 'development';
-const DEV = ENV == 'development';
+const DEV = ENV === 'development';
+const PROD = ENV === 'production';
 
 const APP_ENTRY = './src';
 const DIST = 'dist';
 
 const config = {
-  devtool:"eval",
+  devtool: "cheap-module-eval-source-map",
   module: {},
   resolve: {
     root: [path.resolve('./src')]
@@ -50,8 +52,20 @@ if (DEV) {
   );
 } else if (PROD) {
   config.plugins.push(
-    new webpack.optimize.OccurenceOrderPlugin()
-    //TODO: uglify
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new ExtractTextPlugin("styles.[contenthash].css"),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      mangle: false,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
   );
 }
 
@@ -72,10 +86,22 @@ config.module.loaders = [
       }
     }
   },
-  {
-    test: /\.css$/,
-    loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-  }
 ];
+
+if (DEV) {
+  config.module.loaders.push(
+    {
+      test: /\.css$/,
+      loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+    }
+  );
+} else if (PROD) {
+  config.module.loaders.push(
+    {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+    }
+  );
+}
 
 export default config;
