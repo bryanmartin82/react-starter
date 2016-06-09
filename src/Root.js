@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import HelloWorld from './HelloWorld/containerComponent';
+import HelloWorld from './HelloWorld/Component';
 
 export default class RootContainer extends Component {
   render() {
