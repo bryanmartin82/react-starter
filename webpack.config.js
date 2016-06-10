@@ -14,7 +14,7 @@ const config = {
   devtool: "cheap-module-eval-source-map",
   module: {},
   resolve: {
-    root: [path.resolve('./src')]
+    root: [path.resolve('./src'), path.resolve('./static')]
   }
 };
 
@@ -86,6 +86,10 @@ config.module.loaders = [
       }
     }
   },
+  {
+    test: /\.(png|jpg|gif)$/,
+    loader: 'file-loader?name=images/[name].[hash].[ext]'
+  }
 ];
 
 if (DEV) {

@@ -7,8 +7,8 @@ class HelloWorldContainer extends Component {
   render() {
     const { msg, color, lastColor } = this.props.helloWorld;
     return (
-      <div className={styles.root}>
-        <h1 className={styles.element} onClick={this.getRandomColor} style={{color}}>{msg}</h1>
+      <div>
+        <h1 className={styles.element} onClick={this.getRandomColor} style={{color}}><span className={styles.image}/>{msg}</h1>
         {color == lastColor && <div>D'oh! Same color.</div>}
       </div>
     );
