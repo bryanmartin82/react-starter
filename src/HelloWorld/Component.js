@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect  } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as ActionCreators from './actions';
 import styles from './styles.css';
 
 class HelloWorldContainer extends Component {
   render() {
     const { msg, color, lastColor } = this.props.helloWorld;
+    const { changeColor } = this.props;
     return (
       <div>
-        <h1 className={styles.element} onClick={this.getRandomColor} style={{color}}><span className={styles.image}/>{msg}</h1>
+        <h1 className={styles.element} onClick={changeColor} style={{color}}><span className={styles.image}/>{msg}</h1>
         {color == lastColor && <div>D'oh! Same color.</div>}
       </div>
     );
   }
+}
 
-  getRandomColor = () => {
-    this.props.dispatch(ActionCreators.changeColor());
+const mapState = state => ({
+  helloWorld: state.helloWorld
+});
+
+const mapDispatch = (dispatch) => ({
+  changeColor() {
+    dispatch(ActionCreators.changeColor())
   }
-}
+});
 
-function mapState(state) {
-  return {
-    helloWorld: state.helloWorld
-  };
-}
-
-export default connect(mapState)(HelloWorldContainer);
+export default connect(mapState, mapDispatch)(HelloWorldContainer);

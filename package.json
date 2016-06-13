@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "DEBUG=app:* babel-node ./server",
-    "build": "DEBUG=app:* NODE_ENV=production babel-node webpackBuild",
+    "build": "DEBUG=app:* NODE_ENV=production babel-node webpack.build",
     "clean": "rimraf dist",
     "deploy": "npm run clean && npm run build"
   },

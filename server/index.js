@@ -10,8 +10,12 @@ const compiler = webpack(config);
 const debug = _debug('app:server');
 
 app.use(WebpackDevMiddleware(compiler, {
+  publicPath: config.output.publicPath,
   noInfo: true,
-  publicPath: config.output.publicPath
+  stats: {
+    colors: true,
+    chunks:false
+  }
 }));
 
 app.use(WebpackHotMiddleware(compiler));
@@ -23,4 +27,3 @@ app.listen(3000, '0.0.0.0', err => {
     debug('Dev server running at 0.0.0.0:3000');
   }
 });
-

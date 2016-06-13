@@ -20,7 +20,7 @@ const config = {
 
 config.entry = {
   app: DEV
-    ? ['react-hot-loader/patch', 'webpack-hot-middleware/client', 'webpack/hot/only-dev-server', APP_ENTRY]
+    ? ['webpack-hot-middleware/client', 'webpack/hot/only-dev-server', 'react-hot-loader/patch', APP_ENTRY]
     : [APP_ENTRY]
 };
 
