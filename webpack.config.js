@@ -26,7 +26,6 @@ config.entry = {
 
 config.output = {
   path: path.join(__dirname, DIST),
-  //OccurenceOrderPlugin needed for using chunkhash
   filename: '[name].[hash].js',
   publicPath: ''
 };
