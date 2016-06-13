@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
 import helloWorld from 'HelloWorld/reducer';
 
 const rootReducer = combineReducers({

@@ -18,7 +18,7 @@ class HelloWorldContainer extends Component {
 }
 
 const mapState = state => ({
-  helloWorld: state.helloWorld
+  helloWorld: state.get('helloWorld')
 });
 
 const mapDispatch = (dispatch) => ({

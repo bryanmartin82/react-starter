@@ -77,7 +77,10 @@ config.module.loaders = [
     exclude: /node_modules/,
     query: {
       cacheDirectory: true,
-      plugins: ['transform-runtime', 'react-hot-loader/babel'],
+      plugins: [
+        'transform-runtime',
+        'react-hot-loader/babel',
+        ["extensible-destructuring", {"mode": "optout", "impl": "immutable"}]],
       presets: ['es2015', 'react', 'stage-0'],
       env: {
         production: {

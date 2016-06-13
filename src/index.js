@@ -2,7 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import configureStore from './configureStore';
 import { AppContainer as HMR } from 'react-hot-loader';
+import Immutable from 'immutable';
 import Root from './Root';
+
+if (process.env.NODE_ENV !== 'production') {
+  const immutableDevTools = require('immutable-devtools');
+  immutableDevTools(Immutable);
+}
 
 const store = configureStore();
 

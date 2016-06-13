@@ -1,9 +1,13 @@
 .element {
   cursor:pointer;
+  vertical-align: middle;
+  font-weight: normal;
 }
 .image {
+  margin-right:10px;
   width: 64px;
   height: 64px;
   display:inline-block;
   background-image: url('images/smiley.png');
+  vertical-align: middle;
 }
