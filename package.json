@@ -12,6 +12,7 @@
     "deploy": "npm run clean && npm run build"
   },
   "dependencies": {
+    "autoprefixer": "^6.3.6",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
@@ -31,6 +32,7 @@
     "html-webpack-plugin": "^2.19.0",
     "immutable": "^3.8.1",
     "immutable-devtools": "0.0.7",
+    "postcss-loader": "^0.9.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.1",

@@ -9,8 +9,9 @@ class HelloWorldContainer extends Component {
     const { msg, color, lastColor } = this.props.helloWorld;
     const { changeColor } = this.props;
     return (
-      <div>
-        <h1 className={styles.element} onClick={changeColor} style={{color}}><span className={styles.image}/>{msg}</h1>
+      <div className={styles.root}>
+        <div className={styles.image} onClick={changeColor}/>
+        <h1 className={styles.element} style={{color}}>{msg}</h1>
         {color == lastColor && <div>D'oh! Same color.</div>}
       </div>
     );
