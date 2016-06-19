@@ -5,7 +5,7 @@ import * as ActionCreators from './actions';
 
 import styles from './styles.css';
 import checkmark from 'svg/icons/checkmark.svg';
-import Icon from 'common/components/Icon';
+import Icon from 'common/components/Icon/Component';
 
 class HelloWorldContainer extends Component {
   render() {

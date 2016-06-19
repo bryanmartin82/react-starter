@@ -1,4 +1,5 @@
 import express from 'express';
+import historyApiFallback from 'connect-history-api-fallback';
 import webpack from 'webpack';
 import config from '../webpack.config';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
@@ -8,6 +9,10 @@ import _debug from 'debug';
 const app = express();
 const compiler = webpack(config);
 const debug = _debug('app:server');
+
+app.use(historyApiFallback({
+  verbose: false
+}));
 
 app.use(WebpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
