@@ -1,0 +1,23 @@
+.icon {
+  fill:#fff;
+  opacity:.6;
+  transition: opacity .25s;
+}
+.icon:hover {
+  opacity:1;
+}
+.size16 {
+  composes: icon;
+  width: 16px;
+  height: 16px;
+}
+.size32 {
+  composes: icon;
+  width: 32px;
+  height: 32px;
+}
+.size64 {
+  composes: icon;
+  width: 64px;
+  height: 64px;
+}

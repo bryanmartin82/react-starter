@@ -73,7 +73,7 @@ if (DEV) {
 
 config.module.loaders = [
   {
-    test: /\.(js|jsx)$/,
+    test: /\.(js|jsx)$/i,
     loader: 'babel',
     exclude: /node_modules/,
     query: {
@@ -91,10 +91,31 @@ config.module.loaders = [
     }
   },
   {
-    test: /\.(png|jpg|gif)$/,
-    loader: 'file-loader?name=images/[name].[hash].[ext]'
+    test: /\.(png|jpe?g|gif)$/i,
+    loaders: [
+      'file-loader?name=images/[name].[hash].[ext]',
+      'image-webpack-loader'
+    ]
+  },
+  {
+    test: /\.svg$/i,
+    include: /icons/,
+    loader: 'raw-loader!image-webpack-loader'
   }
 ];
+
+config.imageWebpackLoader = {
+  progressive: true,
+  svgo:{
+    plugins: [
+      {removeViewBox: false},
+      {removeDoctype: true},
+      {removeXMLProcInst: true},
+      {cleanupAttrs: true},
+      {removeComments: true}
+    ]
+  }
+};
 
 if (DEV) {
   config.module.loaders.push(

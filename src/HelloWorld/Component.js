@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import { connect  } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from './actions';
+
 import styles from './styles.css';
+import checkmark from 'svg/icons/checkmark.svg';
+import Icon from 'common/components/Icon';
 
 class HelloWorldContainer extends Component {
   render() {
-    const { msg, color, lastColor } = this.props.helloWorld;
+    const { msg, color } = this.props.helloWorld;
     const { changeColor } = this.props;
     return (
       <div className={styles.root}>
-        <div className={styles.image} onClick={changeColor}/>
-        <h1 className={styles.element} style={{color}}>{msg}</h1>
-        {color == lastColor && <div>D'oh! Same color.</div>}
+        <div className={styles.content} style={{backgroundColor: color}}>
+          <Icon svg={checkmark} className={styles.interactive} onClick={changeColor} size="64" style={{color}} />
+          <h1 className={styles.element}>{msg}</h1>
+        </div>
       </div>
     );
   }
