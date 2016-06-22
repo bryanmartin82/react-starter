@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import * as Actions from './actions';
-import getRandomColor from 'common/utils/getRandomColor';
+import getRandomColor from 'utils/getRandomColor';
 
 const helloWorld = function(state = Immutable.Map({
   msg: 'Hello World!',

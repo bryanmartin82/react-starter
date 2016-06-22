@@ -1,4 +1,4 @@
-import getRandomColor from 'common/utils/getRandomColor';
+import getRandomColor from 'utils/getRandomColor';
 export const HELLO_WORLD_CHANGE_COLOR = 'HELLO_WORLD/CHANGE_COLOR';
 
 export function changeColor() {

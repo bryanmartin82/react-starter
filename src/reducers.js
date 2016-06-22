@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux-immutable';
-import helloWorld from 'HelloWorld/reducer';
+import helloWorld from 'routes/HelloWorld/reducer';
 
 const rootReducer = combineReducers({
   helloWorld
