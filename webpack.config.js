@@ -118,19 +118,15 @@ config.imageWebpackLoader = {
 };
 
 if (DEV) {
-  config.module.loaders.push(
-    {
-      test: /\.css$/,
-      loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
-    }
-  );
+  config.module.loaders.push({
+    test: /\.(scss|css)$/,
+    loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader!postcss-loader'
+  });
 } else if (PROD) {
-  config.module.loaders.push(
-    {
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
-    }
-  );
+  config.module.loaders.push({
+    test: /\.(scss|css)$/,
+    loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader!postcss-loader')
+  });
 }
 
 export default config;

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory} from 'react-router';
 import HelloWorld from 'routes/HelloWorld/Component';
 
-import 'styles/base.css';
+import './styles/base.scss';
 
 export default class RootContainer extends Component {
   render() {
